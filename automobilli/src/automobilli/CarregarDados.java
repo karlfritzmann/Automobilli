@@ -85,53 +85,55 @@ public class CarregarDados {
     public ArrayList<String> dadosFicheiro(String Ficheiro){
         
         File ficheiro = new File(Ficheiro);
-        String linha;
+        String linha = "";
         ArrayList<String> dados = new ArrayList<String>();
         try{
             BufferedReader reader = new BufferedReader(new FileReader(ficheiro));
-            while(reader.readLine() != null){
-                linha = reader.readLine();
-                System.out.println(linha);
-                dados.add(linha);
+            while((linha = reader.readLine()) != null){
+                dados.add(linha.trim());
             }
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
-        
         
         return dados;
     }
     
     
     
-    /*
-    public ArrayList<Cliente> LerClientes() throws FicheiroVazio{
+    //Falta Excecao ListaVazia
+    public ArrayList<Cliente> LerClientes(ArrayList<String> dados){
         
-        long numeroLinhas = NumeroLinhas("cliente.dat");
-        System.out.println(numeroLinhas);
+        
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        String nome, email, palavra_passe, morada;
+        
+        System.out.println(dados);
         
         /*
-        Utilizador u;
-        Cliente c1;
-        u = new Utilizador();
-        c1 = new Cliente(u);
-        
-        c1.setNome(nome);
-        c1.setEmail(email);
-        c1.setPalavra_passe(palavra_passe);
-        c1.setFundos(0);
-        c1.setMorada(Morada);
-        
-        
-        for(int i=0;i <= numeroLinhas; i++){
-            Cliente c = new Cliente();
-        }
-        
-        
+        String[] dadosLinha = new String[dados.get(0).split(",").length];
+        float fundos;
+        System.out.println(dados.size());
+        System.out.println(dados.get(0).split(",").length);
+        for(int i=0;i<dados.size(); i++){
+            dadosLinha = dados.get(i).split(",");
+            nome = dadosLinha[0];
+            email = dadosLinha[1];
+            palavra_passe = dadosLinha[2];
+            morada = dadosLinha[3];
+            fundos = Float.parseFloat(dadosLinha[4]);
+            
+            System.out.println(nome + " " + email + " " + palavra_passe + " " + morada + " " + fundos);
+            /*
+            Utilizador u = new Utilizador(nome, email, palavra_passe);
+            Cliente c = new Cliente(u, morada, 0.0f);
+            clientes.add(c);
+        }*/
+        return clientes;
     }
     
     public void carregarClientes(String ficheiro){
         
-    }*/
+    }
 
 }

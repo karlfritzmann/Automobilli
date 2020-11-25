@@ -51,7 +51,8 @@ public class Automobilli {
         System.out.println(dd);*/
         
         CarregarDados dados = new CarregarDados();
-        System.out.println(dados.dadosFicheiro("cliente.dat"));
+        
+        dados.LerClientes(dados.dadosFicheiro("cliente.dat")).toString();
         
         
         
