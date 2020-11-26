@@ -11,15 +11,23 @@ package automobilli;
  * @author Nuno
  */
 
-//Sรณ os Administradores podem adicionar Empregados!
+//Só os Administradores podem adicionar Empregados!
 public class Administrador extends Empregado{
     private static long ultimo = 0;
-    private long numEmpregado;
+    private long numAdmin; //Podemos ter um nº de empregado, e um numero de admin
     
-    public Administrador(){
+    public Administrador(Empregado x){
+        super(x.getUtilizador(), x.getSalario());
         ultimo++;
-        numEmpregado = ultimo;
+        numAdmin = ultimo;
     }
+    
+    //GETTER
+    public int getNumAdmin(){
+        return numAdmin;}
+    
+    //SETTER
+    public void setNumAdmin(int numAdmin){
+        this.numAdmin = numAdmin;}
 
 }
-
