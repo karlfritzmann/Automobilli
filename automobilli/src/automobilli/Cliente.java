@@ -16,48 +16,60 @@ public class Cliente extends Utilizador{
     private static long ultimo = 0;
     private long numCliente;
     private float fundos;
-    private String Morada;
     
     
     public Cliente(Utilizador utz){
         super(utz.getNome(), utz.getEmail(), utz.getPalavra_passe());
         ultimo++;
         numCliente = ultimo;
+        fundos = 0.0; //não temos de dar um valor inicial?
     }
     
+    public Cliente(Utilizador utz, float fundos){
+        super(utz.getNome(), utz.getEmail(), utz.getPalavra_passe());
+        ultimo++;
+        numCliente = ultimo;
+        this.fundos = fundos;
+    }
     
+    /*
     public Cliente(Utilizador utz,String Morada, float fundos){
         super(utz.getNome(),utz.getEmail(),utz.getPalavra_passe());
         ultimo++;
         numCliente = ultimo;
         this.fundos = fundos;
         this.Morada = Morada;
-    }
+    } */
+    //Com a definição em utilizador, não podemos tirar este? 
     
+    //GETTERS
     public static long getUltimo() {
         return ultimo;
     }
-
-    public static void setUltimo(long ultimo) {
-        Cliente.ultimo = ultimo;
-    }
-
+    
     public long getNumCliente() {
         return numCliente;
+    }
+    
+    public float getFundos() {
+        return fundos;
+    }
+    
+    //SETTERS
+    public static void setUltimo(long ultimo) {
+        Cliente.ultimo = ultimo;
     }
 
     public void setNumCliente(long numCliente) {
         this.numCliente = numCliente;
     }
-
-    public float getFundos() {
-        return fundos;
-    }
-
+    
     public void setFundos(float fundos) {
         this.fundos = fundos;
     }
 
+    
+    /*
     public String getNome() {
         return nome;
     }
@@ -89,6 +101,8 @@ public class Cliente extends Utilizador{
     public void setMorada(String Morada) {
         this.Morada = Morada;
     }
+    */
+    //Desnecessário referir-mos isto, já tendo definido no Utilizador
     
     
     
